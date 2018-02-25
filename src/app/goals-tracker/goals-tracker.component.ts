@@ -82,7 +82,6 @@ export class GoalsTrackerComponent extends BaseChartComponent{
   
     update(): void {
       super.update();
-      debugger;
       this.dims = calculateViewDimensions({
         width: this.width,
         height: this.height,
@@ -108,7 +107,7 @@ export class GoalsTrackerComponent extends BaseChartComponent{
   
       this.yDomain = this.getYDomain();
       this.seriesDomain = this.getSeriesDomain();
-      debugger;
+      
       this.xScale = this.getXScale(this.xDomain, this.dims.width);
       this.yScale = this.getYScale(this.yDomain, this.dims.height);
   
