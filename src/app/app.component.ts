@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ChangeDetectionStrategy} from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserModule} from '@angular/platform-browser';
+
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {single, multi} from '../app/data';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +16,37 @@ export class AppComponent implements OnInit {
   genders = ['male', 'female'];
   signupForm: FormGroup;
   forbiddenUsernames = ['Chris', 'Anna'];
+  single: any[];
+  multi: any[];
 
-  constructor() {}
+  view: any[] = [700, 400];
+
+  // options
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Country';
+  showYAxisLabel = true;
+  yAxisLabel = 'Population';
+
+  colorScheme = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+
+  // line, area
+  autoScale = true;
+  
+  
+  onSelect(event) {
+    console.log(event);
+  }
+
+  constructor() {
+    Object.assign(this, {single, multi});   
+  }
+
 
   ngOnInit() {
     this.signupForm = new FormGroup({
